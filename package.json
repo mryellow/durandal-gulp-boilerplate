@@ -1,6 +1,6 @@
 {
   "name": "durandal-gulp-boilerplate",
-  "version": "1.0.4",
+  "version": "1.0.1",
   "description": "Common Gulp tasks for Durandal development",
   "main": "src/app/index.html",
   "dependencies": {

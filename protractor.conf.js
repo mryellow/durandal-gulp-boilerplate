@@ -12,7 +12,7 @@ exports.config = {
     by.addLocator('valueBind', function (bindingModel, opt_parentElement) {
       var using = opt_parentElement || document;
       var matches = using.querySelectorAll('*[value\\.bind="' + bindingModel +'"]');
-      var result = undefined;
+      var result;
 
       if (matches.length === 0) {
         result = null;

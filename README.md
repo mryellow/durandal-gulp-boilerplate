@@ -29,10 +29,11 @@ JSCS code style.
 JSHint linting.
 
 `gulp test`
-Protractor tests.
+Karma tests.
 
 `gulp e2e`
-Karma tests.
+Protractor tests.
 
 `gulp serve`
 `gulp watch`
+`gulp prepare-release`

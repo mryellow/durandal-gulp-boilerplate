@@ -1,7 +1,7 @@
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 //var to5 = require('gulp-6to5');
 //var plumber = require('gulp-plumber');
-var gulp = require('gulp');
 var webdriver_update = require('gulp-protractor').webdriver_update;
 var protractor = require("gulp-protractor").protractor;
 var paths = require('../paths');
@@ -23,11 +23,14 @@ gulp.task('build-e2e', function () {
 // runs build-e2e task
 // then runs end to end tasks
 // using Protractor: http://angular.github.io/protractor/
-gulp.task('e2e', ['webdriver_update', 'build-e2e'], function(cb) {
+gulp.task('e2e', ['webdriver_update', 'build-e2e', 'serve-dist'], function(cb) {
   return gulp.src(paths.e2eSpecsDist + "/*.js")
     .pipe(protractor({
         configFile: "protractor.conf.js",
-        args: ['--baseUrl', 'http://127.0.0.1:9000']
+        args: ['--baseUrl', 'http://127.0.0.1:9001']
     }))
-    .on('error', function(e) { console.log(e); throw e; });
+    .on('error', function(e) {
+        gutil.beep();
+        throw e;
+    });
 });

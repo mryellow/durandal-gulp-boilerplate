@@ -5,7 +5,8 @@ var browserSync = require('browser-sync');
 // to create a dev server instance
 // at http://localhost:9000
 //gulp.task('serve', ['build'], function(done) {
-  gulp.task('serve', function(done) {
+
+gulp.task('serve', function(done) {
   browserSync({
     open: true,
     port: 9000,
@@ -17,4 +18,20 @@ var browserSync = require('browser-sync');
       }
     }
   }, done);
+
+});
+
+gulp.task('serve-dist', function(done) {
+  browserSync({
+    open: false,
+    port: 9001,
+    server: {
+      baseDir: ['dist/'],
+      middleware: function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        next();
+      }
+    }
+  }, done);
+  
 });
