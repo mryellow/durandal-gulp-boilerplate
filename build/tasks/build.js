@@ -14,9 +14,11 @@ var paths = require('../paths');
 // the plumber() call prevents 'pipe breaking' caused
 // by errors from other gulp plugins
 // https://www.npmjs.com/package/gulp-plumber
-gulp.task('build-system', ['durandal'], function () {
-  //return runSequence('durandal'); // FIXME: `runSequence` needed?
-  return true;
+gulp.task('build-system', function (callback) {
+  return runSequence(
+    'durandal',
+    callback
+  );
 });
 
 /*
