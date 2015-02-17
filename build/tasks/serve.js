@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var paths = require('../paths');
 
 // this task utilizes the browsersync plugin
 // to create a dev server instance
@@ -26,7 +27,7 @@ gulp.task('serve-dist', function(done) {
     open: false,
     port: 9001,
     server: {
-      baseDir: ['dist/'],
+      baseDir: [paths.output],
       middleware: function (req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         next();

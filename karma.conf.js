@@ -1,5 +1,4 @@
 // Karma configuration
-// Generated on Tue Feb 17 2015 12:49:48 GMT+1100 (AUS Eastern Daylight Time)
 
 module.exports = function(config) {
   config.set({
@@ -60,7 +59,7 @@ module.exports = function(config) {
     //browsers: ['Chrome', 'Firefox'],
     //browsers: ['Chrome'],
     browsers: ['PhantomJS'],
-    
+
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false

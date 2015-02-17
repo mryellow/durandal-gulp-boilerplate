@@ -6,7 +6,6 @@ var karma = require('karma').server;
  * Run test once and exit
  */
 gulp.task('test', function (done) {
-	console.log(__dirname);
 	karma.start({
 		configFile: __dirname + '/../../karma.conf.js',
 		singleRun: true
