@@ -29,7 +29,7 @@ JSCS code style.
 JSHint linting.
 
 `gulp test`
-Karma tests on `.` port 9000.
+Karma tests on `.` on PhantomJS.
 
 `gulp e2e`
 Protractor tests on `dist/` port 9001.
