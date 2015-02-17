@@ -1,10 +1,10 @@
 var gulp = require('gulp');
-var paths = require('../paths');
 //var to5 = require('gulp-6to5');
 //var plumber = require('gulp-plumber');
 var gulp = require('gulp');
 var webdriver_update = require('gulp-protractor').webdriver_update;
 var protractor = require("gulp-protractor").protractor;
+var paths = require('../paths');
 
 // for full documentation of gulp-protractor,
 // please check https://github.com/mllrsohn/gulp-protractor
