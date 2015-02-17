@@ -11,7 +11,7 @@ Delete bower dependencies, from `lib` and `dist/lib`.
 Complete build including bower and Durandal.
 
 `gulp build-deps`
-Clean and reinstall bower dependencies:
+Clean and reinstall bower dependencies. Room for other dependency managers.
 
 `gulp build-bower`
 Install bower dependencies and copy main files to `lib` and `dist/lib`.
@@ -29,11 +29,12 @@ JSCS code style.
 JSHint linting.
 
 `gulp test`
-Karma tests.
+Karma tests on '.' port 9000.
 
 `gulp e2e`
-Protractor tests.
+Protractor tests on 'dist/' port 9001.
 
 `gulp serve`
 `gulp watch`
+
 `gulp prepare-release`

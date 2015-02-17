@@ -10,9 +10,9 @@ var onError = function (err) {
 };
 
 gulp.task('cs', function () {
-    return gulp.src(paths.source)
-    	.pipe(plumber({
+	return gulp.src(paths.source)
+		.pipe(plumber({
 			errorHandler: onError
 		}))
-    	.pipe(jscs());
+		.pipe(jscs());
 });
