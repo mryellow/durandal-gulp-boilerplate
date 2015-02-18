@@ -58,7 +58,8 @@ gulp.task('build-bower', function() {
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
-    ['build-bower', 'sass'], 
+    ['build-bower'], 
+    'sass',
     callback
   );
 });
