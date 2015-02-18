@@ -5,6 +5,7 @@ var appRoot = 'app/';
 module.exports = {
   root: appRoot,
   source: appRoot + '**/*.js',
+  views: appRoot + 'views/*.html',
   html: 'index.html',
   sassSrc: 'assets/style/**/*.scss',
   sassDist: 'assets/style/dist/',
