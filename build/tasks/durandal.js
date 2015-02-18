@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-//var gutil = require('gulp-util');
 var fs = require('fs');
 var durandal = require('gulp-durandal');
 var header = require('gulp-header');
