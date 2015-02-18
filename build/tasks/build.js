@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var bower = require('gulp-bower');
 var mainBowerFiles = require('main-bower-files');
 var runSequence = require('run-sequence');
 var durandal = require('./durandal');
@@ -49,6 +50,11 @@ gulp.task('build-assets', function () {
 
 // Place both in the `vendor` directory for debug along with `dist`.
 gulp.task('build-bower', function() {
+  return bower();
+});
+
+// Place both in the `vendor` directory for debug along with `dist`.
+gulp.task('build-bower-main', ['build-bower'], function() {
   return gulp.src(mainBowerFiles(), { base: 'bower_components' })
     .pipe(gulp.dest(paths.vendor))
     // TODO: `changed` and copy to output later
@@ -58,7 +64,7 @@ gulp.task('build-bower', function() {
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
-    ['build-bower'], 
+    ['build-bower-main'], 
     'sass',
     callback
   );
