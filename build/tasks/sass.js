@@ -3,6 +3,7 @@ var gulp            = require('gulp'),
     changed         = require('gulp-changed'),
     autoprefixer    = require('gulp-autoprefixer'),
     //sourcemaps      = require('gulp-sourcemaps'),
+    neat            = require('node-neat').includePaths,
     paths = require('../paths');
 
 gulp.task('sass', function() {
@@ -14,7 +15,7 @@ gulp.task('sass', function() {
     }))
     */
     .pipe(sass({
-      //includePaths: require('node-neat').includePaths,
+      includePaths: neat,
       errLogToConsole:true,
     }))
     .pipe(autoprefixer())

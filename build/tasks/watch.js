@@ -9,6 +9,7 @@ function reportChange(event){
 
 gulp.task('bs-inject-css', function (){
 	gulp.src([paths.style])
+		// TODO: `changed`?
 		.pipe(browserSync.reload({stream: true}));
 });
 

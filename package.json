@@ -2,7 +2,7 @@
   "name": "durandal-gulp-boilerplate",
   "version": "1.0.1",
   "description": "Common Gulp tasks for Durandal development",
-  "main": "src/app/index.html",
+  "main": "dist/index.html",
   "dependencies": {
     "gulp": "^3.8.11"
   },
@@ -31,6 +31,8 @@
     "karma-requirejs": "^0.2.2",
     "main-bower-files": "^2.5.0",
     "map-stream": "0.0.5",
+    "node-bourbon": "^1.2.3",
+    "node-neat": "^1.4.2",
     "require-dir": "^0.1.0",
     "requirejs": "^2.1.16",
     "run-sequence": "^1.0.2",

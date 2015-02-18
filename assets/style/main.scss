@@ -1,0 +1,19 @@
+@import 'bourbon';
+@import 'neat';
+
+// Bourbon mixin with Sass
+h1 {
+  font-family: $helvetica;
+  font-size: golden-ratio(14px,  1);
+}
+
+// Enter Neat
+div.alert {
+  @include outer-container;
+  aside { @include span-columns(3); }
+  article { @include span-columns(9); }
+}
+
+.alert {
+	background-color: #f44336;
+}
