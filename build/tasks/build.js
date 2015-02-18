@@ -49,12 +49,12 @@ gulp.task('build-assets', function () {
 });
 
 // Place both in the `vendor` directory for debug along with `dist`.
-gulp.task('build-bower', function() {
+gulp.task('build-bower-install', function() {
   return bower();
 });
 
 // Place both in the `vendor` directory for debug along with `dist`.
-gulp.task('build-bower-main', ['build-bower'], function() {
+gulp.task('build-bower', ['build-bower-install'], function() {
   return gulp.src(mainBowerFiles(), { base: 'bower_components' })
     .pipe(gulp.dest(paths.vendor))
     // TODO: `changed` and copy to output later
@@ -64,7 +64,7 @@ gulp.task('build-bower-main', ['build-bower'], function() {
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
-    ['build-bower-main'], 
+    ['build-bower'], 
     'sass',
     callback
   );
