@@ -1,0 +1,10 @@
+$bootstrap-sass-asset-helper: false !default;
+@import "bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+//
+// Variables
+// --------------------------------------------------
+
+//** Background color for `<body>`.
+$body-bg:               #ccc !default;
+//** Global text color on `<body>`.
+$text-color:            $gray-dark !default;
