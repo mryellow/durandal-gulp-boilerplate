@@ -48,7 +48,7 @@ gulp.task('build-assets', function () {
     .pipe(gulp.dest(paths.output + paths.assets));
 });
 
-// Place both in the `vendor` directory for debug along with `dist`.
+// Run `bower install`.
 gulp.task('build-bower-install', function() {
   return bower();
 });
