@@ -38,7 +38,7 @@ Karma tests on `.` via PhantomJS.
 Protractor tests on `dist/` port 9001.
 
 `gulp sass`
-Preprocess `assets/` scss files to css.
+Preprocess `assets/style/main.scss` to css. Can process whole directory if needed.
 
 `gulp serve`
 `gulp watch`
