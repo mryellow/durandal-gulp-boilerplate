@@ -35,7 +35,7 @@ gulp.task('prepare-release', function(callback){
     'lint',
     'e2e',
     'bump-version',
-    //'doc',
+    'doc',
     'changelog',
     callback
   );
