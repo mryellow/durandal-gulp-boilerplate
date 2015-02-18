@@ -17,7 +17,7 @@ requirejs.config({
         'durandal':                 '../lib/durandal/js',
         'plugins':                  '../lib/durandal/js/plugins',
         'transitions':              '../lib/durandal/js/transitions',
-        'knockout':                 '../lib/knockout.js/knockout',
+        'knockout':                 '../lib/knockout/dist/knockout',
         'jquery':	                '../lib/jquery/jquery.min'
     },
     shim: {
