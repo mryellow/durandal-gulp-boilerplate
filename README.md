@@ -7,6 +7,9 @@ Delete files from `dist`.
 `gulp clean-deps`
 Delete bower dependencies, from `lib` and `dist/lib`.
 
+`gulp clean-sass`
+Delete processed CSS from `assets/style/dist`.
+
 `gulp build`
 Complete build including bower and Durandal.
 
