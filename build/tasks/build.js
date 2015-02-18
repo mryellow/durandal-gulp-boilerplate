@@ -71,7 +71,7 @@ gulp.task('build', function(callback) {
   return runSequence(
     'clean',
     'build-bower',
-    ['build-system', 'build-html'],
+    ['build-system', 'build-html', 'build-assets'],
     callback
   );
 });
