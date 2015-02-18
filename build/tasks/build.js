@@ -40,11 +40,19 @@ gulp.task('build-html', function () {
     .pipe(gulp.dest(paths.output));
 });
 
+// copies changed asset files to the output directory
+gulp.task('build-assets', ['sass'], function () {
+  return gulp.src([paths.assets + '**/*.'+paths.allowed])
+    .pipe(changed(paths.output + paths.assets))
+    .pipe(gulp.dest(paths.output + paths.assets));
+});
+
 // Place both in the `vendor` directory for debug along with `dist`.
 gulp.task('build-bower', function() {
   return gulp.src(mainBowerFiles(), { base: 'bower_components' })
     .pipe(gulp.dest(paths.vendor))
-    .pipe(gulp.dest(paths.output + 'lib/'));
+    // TODO: `changed` and copy to output later
+    .pipe(gulp.dest(paths.output + paths.vendor));
 });
 
 gulp.task('build-deps', function(callback) {

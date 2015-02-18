@@ -10,5 +10,5 @@ gulp.task('durandal', function(){
             almond: true,
             minify: true
         })
-        .pipe(gulp.dest(paths.output + 'app/'));
+        .pipe(gulp.dest(paths.output + paths.root));
 });

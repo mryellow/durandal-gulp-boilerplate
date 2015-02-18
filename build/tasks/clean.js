@@ -11,6 +11,6 @@ gulp.task('clean', ['clean-deps'], function() {
 
 // deletes all files in the vendor path
 gulp.task('clean-deps', function() {
-  return gulp.src([paths.vendor, paths.output + 'lib/'])
+  return gulp.src([paths.vendor, paths.output + paths.vendor])
     .pipe(vinylPaths(del));
 });

@@ -22,6 +22,9 @@ RequireJS optimise Durandal build.
 `gulp build-html`
 Copy html to `dist`.
 
+`gulp build-assets`
+Copy CSS, images and other assets.
+
 `gulp cs`
 JSCS code style.
 
@@ -33,6 +36,9 @@ Karma tests on `.` via PhantomJS.
 
 `gulp e2e`
 Protractor tests on `dist/` port 9001.
+
+`gulp sass`
+Preprocess `assets/` scss files to css.
 
 `gulp serve`
 `gulp watch`

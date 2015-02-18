@@ -1,5 +1,6 @@
 dist
 test/e2e/dist
+assets/style/dist/
 lib
 node_modules
 jspm_packages
