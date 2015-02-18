@@ -41,8 +41,8 @@ gulp.task('build-html', function () {
 });
 
 // copies changed asset files to the output directory
-gulp.task('build-assets', ['sass'], function () {
-  return gulp.src([paths.assets + '**/*.'+paths.allowed])
+gulp.task('build-assets', function () {
+  return gulp.src(paths.assets + '**/*.' + paths.allowed)
     .pipe(changed(paths.output + paths.assets))
     .pipe(gulp.dest(paths.output + paths.assets));
 });
@@ -58,7 +58,7 @@ gulp.task('build-bower', function() {
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
-    ['build-bower'], 
+    ['build-bower', 'sass'], 
     callback
   );
 });
@@ -70,7 +70,7 @@ gulp.task('build-deps', function(callback) {
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    'build-bower',
+    'build-deps',
     ['build-system', 'build-html', 'build-assets'],
     callback
   );
