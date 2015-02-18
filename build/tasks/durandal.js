@@ -28,7 +28,6 @@ gulp.task('durandal', function() {
             	cfg.preserveLicenseComments = true;
             	cfg.generateSourceMaps = false;
 	            cfg.uglify2 = {
-	            	banner: 'test',
 					output: {
 						beautify: false
 					},
