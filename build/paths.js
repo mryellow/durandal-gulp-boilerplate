@@ -1,19 +1,21 @@
 var path = require('path');
 
 var appRoot = 'app/';
+var srcRoot = 'src/';
 
 module.exports = {
   root: appRoot,
-  source: appRoot + '**/*.js',
-  views: appRoot + 'views/*.html',
-  html: 'index.html',
-  //sassSrc: 'assets/style/**/*.scss',
-  sassSrc: 'assets/style/main.scss',
-  sassDist: 'assets/style/dist/',
-  style: 'assets/**/*.css',
+  source: srcRoot + appRoot + '**/*.js',
+  views: srcRoot + appRoot + 'views/*.html',
+  html: srcRoot + 'index.html',
+  //sassSrc: srcRoot + 'assets/style/**/*.scss',
+  sassSrc: srcRoot + 'assets/style/main.scss',
+  sassDist: srcRoot + 'assets/style/dist/',
+  style: srcRoot + 'assets/**/*.css',
   assets: 'assets/',
   allowed: '{jpg,png,gif,css}',
   vendor: 'lib/',
+  input: srcRoot,
   output: 'dist/',
   doc:'./doc',
   e2eSpecsSrc: 'test/e2e/src/*.spec.js',

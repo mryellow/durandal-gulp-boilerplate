@@ -11,7 +11,7 @@ gulp.task('clean', ['clean-deps'], function() {
 
 // deletes all files in the vendor path
 gulp.task('clean-deps', ['clean-sass'], function() {
-  return gulp.src([paths.vendor, paths.output + paths.vendor])
+  return gulp.src([paths.input + paths.vendor, paths.output + paths.vendor])
     .pipe(vinylPaths(del));
 });
 

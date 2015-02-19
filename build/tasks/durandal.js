@@ -18,7 +18,7 @@ gulp.task('durandal', function() {
 		''].join('\n');
 	
     return durandal({
-            baseDir: paths.root,
+            baseDir: paths.input + paths.root,
             main: 'main.js',
             output: 'main.js',
             almond: true,

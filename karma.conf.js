@@ -4,7 +4,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    baseUrl: '/base/app',
+    baseUrl: '/base/src/app',
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -14,8 +14,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test/unit/test-main.js',
-      {pattern: 'app/**/*.js', included: false},
-      {pattern: 'lib/**/*.js', included: false},
+      {pattern: 'src/app/**/*.js', included: false},
+      {pattern: 'src/lib/**/*.js', included: false},
       {pattern: 'test/unit/**/*.spec.js', included: false}
     ],
 
