@@ -19,5 +19,6 @@ module.exports = {
   output: 'dist/',
   doc:'./doc',
   e2eSpecsSrc: 'test/e2e/src/*.spec.js',
-  e2eSpecsDist: 'test/e2e/dist/'
+  e2eSpecsDist: 'test/e2e/dist/',
+  bootstrapjs: '{alert,button,collapse,dropdown,modal}'
 };

@@ -1,9 +1,12 @@
 var gulp = require('gulp');
 var bower = require('gulp-bower');
+var concat = require('gulp-concat');
 var mainBowerFiles = require('main-bower-files');
 var runSequence = require('run-sequence');
 var durandal = require('./durandal');
 var changed = require('gulp-changed');
+var del = require('del');
+var vinylPaths = require('vinyl-paths');
 //var plumber = require('gulp-plumber');
 //var to5 = require('gulp-6to5');
 //var sourcemaps = require('gulp-sourcemaps');
@@ -38,6 +41,7 @@ gulp.task('build-system', function () {
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
+    // TODO: Replace RequireJS with Almond `main.js`
     .pipe(gulp.dest(paths.output));
 });
 
@@ -56,16 +60,29 @@ gulp.task('build-bower-install', function() {
 // Place both in the `vendor` directory for debug along with `dist`.
 gulp.task('build-bower', ['build-bower-install'], function() {
   return gulp.src(mainBowerFiles(), { base: 'bower_components' })
-    .pipe(gulp.dest(paths.input + paths.vendor))
-    // TODO: `changed` and copy to output later
-    .pipe(gulp.dest(paths.output + paths.vendor));
+    .pipe(gulp.dest(paths.input + paths.vendor));
+    //.pipe(gulp.dest(paths.output + paths.vendor));
+});
+
+// Concat only required bootstrap components.
+gulp.task('build-bootstrap-js', function() {
+  return gulp.src('bower_components/bootstrap-sass/assets/javascripts/bootstrap/' + paths.bootstrapjs + '.js')
+    .pipe(concat('bootstrap.js'))
+    .pipe(gulp.dest(paths.input + paths.vendor + 'bootstrap-sass/assets/javascripts/'));
+    //.pipe(gulp.dest(paths.output + paths.vendor + 'bootstrap-sass/assets/javascripts/'));
+});
+
+gulp.task('build-bootstrap-fonts', function() {
+  return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest(paths.input + paths.vendor + 'bootstrap-sass/assets/fonts/bootstrap/'))
+    .pipe(gulp.dest(paths.output + paths.vendor + 'bootstrap-sass/assets/fonts/bootstrap/'));
 });
 
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
     ['build-bower'], 
-    'sass',
+    ['build-bootstrap-js', 'build-bootstrap-fonts', 'sass'],
     callback
   );
 });
