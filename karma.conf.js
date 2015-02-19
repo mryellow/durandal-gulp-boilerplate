@@ -17,7 +17,7 @@ module.exports = function(config) {
       'test/unit/test-main.js',
       {pattern: paths.input + paths.root + '**/*.js', included: false},
       {pattern: paths.input + paths.vendor + '**/*.js', included: false},
-      {pattern: 'test/unit/**/*.spec.js', included: false}
+      {pattern: 'test/unit/dev/**/*.spec.js', included: false}
     ],
 
     // list of files to exclude

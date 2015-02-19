@@ -23,8 +23,9 @@ gulp.task('durandal', function() {
             output: 'main.js',
             almond: true,
             minify: true,
+            verbose: false,
             rjsConfigAdapter: function(cfg) {
-            	cfg.preserveLicenseComments = true;
+            	cfg.preserveLicenseComments = false;
             	cfg.generateSourceMaps = false;
 	            cfg.uglify2 = {
 					output: {

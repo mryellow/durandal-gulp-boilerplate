@@ -8,7 +8,7 @@ var gulp            = require('gulp'),
 
 gulp.task('sass', function(done) {
   gulp.src(paths.sassSrc)
-    .pipe(changed(paths.sassDist, {extension:'.css'}))
+    //.pipe(changed(paths.sassDist, {extension:'.css'}))
     /*
     .pipe(sourcemaps.init({
       loadMaps:true

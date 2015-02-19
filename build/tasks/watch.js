@@ -23,6 +23,6 @@ gulp.task('bs-reload', function (){
 gulp.task('watch', ['sass', 'cs', 'lint', 'test', 'serve'], function() {
 	gulp.watch(paths.source, ['cs', 'lint', 'test', 'bs-reload']).on('change', reportChange);
 	gulp.watch([paths.html, paths.views], ['bs-reload']).on('change', reportChange);
-	gulp.watch(paths.sassSrc, ['sass']).on('change', reportChange);
+	gulp.watch(paths.sassWatch, ['sass']).on('change', reportChange);
 	gulp.watch(paths.style, ['bs-inject-css']).on('change', reportChange);
 });

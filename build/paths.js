@@ -8,7 +8,7 @@ module.exports = {
   source: srcRoot + appRoot + '**/*.js',
   views: srcRoot + appRoot + 'views/*.html',
   html: srcRoot + 'index.html',
-  //sassSrc: srcRoot + 'assets/style/**/*.scss',
+  sassWatch: srcRoot + 'assets/style/**/*.scss',
   sassSrc: srcRoot + 'assets/style/main.scss',
   sassDist: srcRoot + 'assets/style/dist/',
   style: srcRoot + 'assets/**/*.css',

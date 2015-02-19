@@ -6,6 +6,7 @@ requirejs.config({
         'transitions':              '../vendor/durandal/js/transitions',
         'knockout':                 '../vendor/knockout/dist/knockout',
         'jquery':	                '../vendor/jquery/jquery.min'
+        //'bootstrap':                '../vendor/bootstrap-sass/assets/javascripts/bootstrap'
     },
     shim: {
     }
