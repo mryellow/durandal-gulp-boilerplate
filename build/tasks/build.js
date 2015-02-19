@@ -7,6 +7,7 @@ var durandal = require('./durandal');
 var changed = require('gulp-changed');
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
+var replace = require('gulp-replace');
 //var plumber = require('gulp-plumber');
 //var to5 = require('gulp-6to5');
 //var sourcemaps = require('gulp-sourcemaps');
@@ -37,11 +38,13 @@ gulp.task('build-system', function () {
 });
 */
 
+
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
-    // TODO: Replace RequireJS with Almond `main.js`
+    // Use optimised build including Almond
+    .pipe(replace('vendor/requirejs/require.js', 'app/main.js'))
     .pipe(gulp.dest(paths.output));
 });
 
