@@ -14,7 +14,7 @@ module.exports = {
   style: srcRoot + 'assets/**/*.css',
   assets: 'assets/',
   allowed: '{jpg,png,gif,css}',
-  vendor: 'lib/',
+  vendor: 'vendor/',
   input: srcRoot,
   output: 'dist/',
   doc:'./doc',

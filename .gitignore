@@ -1,7 +1,7 @@
 dist/
 test/e2e/dist/
 src/assets/style/dist/
-src/lib/
+src/vendor/
 node_modules
 jspm_packages
 bower_components

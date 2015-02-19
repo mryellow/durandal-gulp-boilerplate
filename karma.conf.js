@@ -1,10 +1,11 @@
-// Karma configuration
+var paths = require('./build/paths');
 
+// Karma configuration
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    baseUrl: '/base/src/app',
+    baseUrl: '/base/' + paths.input + paths.root,
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -14,14 +15,14 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test/unit/test-main.js',
-      {pattern: 'src/app/**/*.js', included: false},
-      {pattern: 'src/lib/**/*.js', included: false},
+      {pattern: paths.input + paths.root + '**/*.js', included: false},
+      {pattern: paths.input + paths.vendor + '**/*.js', included: false},
       {pattern: 'test/unit/**/*.spec.js', included: false}
     ],
 
     // list of files to exclude
     exclude: [
-        'app/main.js'
+        paths.input + paths.root + 'main.js'
     ],
 
 
