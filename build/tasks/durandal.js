@@ -25,6 +25,20 @@ gulp.task('durandal', function() {
             minify: true,
             verbose: false,
             rjsConfigAdapter: function(cfg) {
+            	// Remove unneeded plugins.
+            	cfg.exclude = [];
+            	/*
+            	// FIXME: Excluding, broke `jQuery` definition.
+            	cfg.exclude = [
+					'plugins/dialog',
+					'plugins/history',
+					'plugins/widget',
+            	];
+            	*/
+            	cfg.include = cfg.include.filter(function(item) {
+            		return (cfg.exclude.indexOf(item) === -1);
+            	});
+            	console.log(cfg.include);
             	cfg.preserveLicenseComments = false;
             	cfg.generateSourceMaps = false;
 	            cfg.uglify2 = {

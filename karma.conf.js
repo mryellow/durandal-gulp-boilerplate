@@ -13,6 +13,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
+    // TODO: Use requirejs.config
     files: [
       'test/unit/test-main.js',
       {pattern: paths.input + paths.root + '**/*.js', included: false},

@@ -38,21 +38,20 @@ gulp.task('build-system', function () {
 });
 */
 
-
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
     // Use optimised build including Almond
-    .pipe(replace('vendor/requirejs/require.js', 'app/main.js'))
+    .pipe(replace(paths.vendor + 'requirejs/require.js', paths.root + 'main.js'))
     .pipe(gulp.dest(paths.output));
 });
 
-// copies changed asset files to the output directory
+// copies changed asset files to the output directory, includes directories other than `assets/`.
 gulp.task('build-assets', function () {
-  return gulp.src(paths.input + paths.assets + '**/*.' + paths.allowed)
-    .pipe(changed(paths.output + paths.assets))
-    .pipe(gulp.dest(paths.output + paths.assets));
+  return gulp.src(paths.input + '**/*.' + paths.allowed)
+    .pipe(changed(paths.output))
+    .pipe(gulp.dest(paths.output));
 });
 
 // Run `bower install`.
@@ -74,18 +73,18 @@ gulp.task('build-bootstrap-js', function() {
     .pipe(gulp.dest(paths.input + paths.vendor + 'bootstrap-sass/assets/javascripts/'));
     //.pipe(gulp.dest(paths.output + paths.vendor + 'bootstrap-sass/assets/javascripts/'));
 });
-
+/*
 gulp.task('build-bootstrap-fonts', function() {
   return gulp.src('bower_components/bootstrap-sass/assets/fonts/bootstrap/*.{eot,svg,ttf,woff,woff2}')
     .pipe(gulp.dest(paths.input + paths.vendor + 'bootstrap-sass/assets/fonts/bootstrap/'))
-    .pipe(gulp.dest(paths.output + paths.vendor + 'bootstrap-sass/assets/fonts/bootstrap/'));
+    //.pipe(gulp.dest(paths.output + paths.vendor + 'bootstrap-sass/assets/fonts/bootstrap/'));
 });
-
+*/
 gulp.task('build-deps', function(callback) {
   return runSequence(
     'clean-deps', 
     ['build-bower'], 
-    ['build-bootstrap-js', 'build-bootstrap-fonts', 'sass'],
+    ['build-bootstrap-js', 'sass'],
     callback
   );
 });
