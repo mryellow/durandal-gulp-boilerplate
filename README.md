@@ -31,7 +31,7 @@ Complete build including bower and Durandal.
 Install bower dependencies.
 
 `gulp build-bower`
-Copy main files to `lib` and `dist/lib`.
+Copy main files to `vendor` and `dist/vendor`.
 
 `gulp build-deps`
 Clean and reinstall bower dependencies. Room for other dependency managers.
