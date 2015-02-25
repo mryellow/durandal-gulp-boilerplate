@@ -48,6 +48,9 @@ Copy CSS, images and other assets, including vendor assets.
 `gulp build-bootstrap-js`
 Concat bootstrap components and copy to `vendor/`.
 
+`gulp doc`
+Generate YUIDocs.
+
 `gulp cs`
 JSCS code style.
 
@@ -69,3 +72,11 @@ Preprocess `assets/style/main.scss` to css. Can process whole directory if neede
 `gulp watch`
 
 `gulp prepare-release`
+
+## Configuration
+
+`allowed: '{jpg,png,gif,css}'`
+Specify which asset types are copied.
+
+`bootstrapjs: '{alert,button,collapse,dropdown,modal}'`
+Customise bootstrap javascript, leaving out unused components.
