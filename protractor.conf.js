@@ -35,7 +35,7 @@ exports.config = {
   //seleniumAddress: 'http://0.0.0.0:4444',
   // add proper version number
   seleniumServerJar: './node_modules/gulp-protractor/node_modules/protractor/selenium/selenium-server-standalone-2.44.0.jar',
-  specs: [paths.e2eSpecsDist + '*.js'],
+  specs: [paths.e2eSpecsDist + '*.spec.js'],
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {
