@@ -20,3 +20,9 @@ gulp.task('clean-sass', function() {
   return gulp.src([paths.sassDist])
     .pipe(vinylPaths(del));
 });
+
+// deletes all files in the e2eSpecsDist path
+gulp.task('clean-e2e', function() {
+  return gulp.src([paths.e2eSpecsDist])
+    .pipe(vinylPaths(del));
+});

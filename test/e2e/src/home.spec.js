@@ -1,12 +1,12 @@
 describe('homepage', function() {
+    var route = 'home';
+    var title = 'Welcome';
+
     var config  = require('./test.conf');
     var Utils = require('./utils');
     var u = new Utils();
-    var HomePage = require('./home.page');
-    var page = new HomePage();
-
-    var route = '';
-    var title = 'Welcome';
+    var Page = require('./' + route + '.page');
+    var page = new Page();
     
     beforeEach(function (done) {
         page.init(route, title).then(function () {

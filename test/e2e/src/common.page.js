@@ -14,9 +14,30 @@ var CommonPage = (function () {
         var d = protractor.promise.defer();
         var _self = this;
 
-        //_self.waitReady();
+/*
+// TODO: Implement better navigation status tracker.
+https://github.com/angular/protractor/issues/610
+var waitForCurrentUrl = function(timeout) {
+    if (timeout == null) {
+        timeout = browser.manage().timeouts().pageLoadTimeout;
+    };
+
+    return browser.driver.wait(function() {
+        // Return a condition. Code will continue to run until is true 
+        return browser.driver.getCurrentUrl().then(function(url) {
+            return url;
+        }, function(err) {
+            // errored  .. TODO: retry
+            throw err;
+        });
+    }, timeout, 'Expectation error: Timed out waiting for current url');
+};
+*/
+
+        
         // CUSTOM: Optional, click navigation rather than using a `get`.
         //koSendClick(by.xpath("//*[@id='navbar_main']//a[@role='menuitem' and text()='" + title + "']"));
+        _self.waitReady();
         browser.driver.get(browser.baseUrl + '#' + route).then(function () {
             browser.driver.wait(function () {
                 // TODO: `getCurrentUrl`

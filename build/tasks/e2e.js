@@ -14,7 +14,7 @@ gulp.task('webdriver_update', webdriver_update);
 // /test/e2e/src/ from es6 to es5
 // then copies them to test/e2e/dist/
 // TODO: clear dist directory first
-gulp.task('build-e2e', function () {
+gulp.task('build-e2e', ['clean-e2e'], function () {
   return gulp.src(paths.e2eSpecsSrc)
     //.pipe(plumber())
     //.pipe(to5())
