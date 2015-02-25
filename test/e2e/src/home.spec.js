@@ -1,4 +1,5 @@
 describe('homepage', function() {
+    // 'home' was used to make the require '.page' before a good template for other pages.
     var route = 'home';
     var title = 'Welcome';
 
@@ -12,8 +13,7 @@ describe('homepage', function() {
         page.init(route, title).then(function () {
             done();
         });
-
-    });
+    }, 30000);
 
     describe('title', function() {
 

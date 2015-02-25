@@ -8,7 +8,7 @@ define(['plugins/router', 'durandal/app'], function (router, app) {
         },
         activate: function () {
             router.map([
-                { route: ['', 'home'], title: 'Welcome', moduleId: 'viewmodels/welcome', nav: true }
+                { route: ['home', ''], title: 'Welcome', moduleId: 'viewmodels/welcome', nav: true }
             ]).buildNavigationModel();
             
             return router.activate();

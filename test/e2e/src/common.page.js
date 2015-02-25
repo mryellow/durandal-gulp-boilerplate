@@ -1,5 +1,5 @@
 /**
- * Page controller
+ * Common controller
  */
 var CommonPage = (function () {
     var config  = require('./test.conf');
@@ -37,7 +37,6 @@ var waitForCurrentUrl = function(timeout) {
         
         // CUSTOM: Optional, click navigation rather than using a `get`.
         //koSendClick(by.xpath("//*[@id='navbar_main']//a[@role='menuitem' and text()='" + title + "']"));
-        _self.waitReady();
         browser.driver.get(browser.baseUrl + '#' + route).then(function () {
             browser.driver.wait(function () {
                 // TODO: `getCurrentUrl`
