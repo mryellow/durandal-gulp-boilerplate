@@ -13,6 +13,7 @@ gulp.task('webdriver_update', webdriver_update);
 // transpiles files in
 // /test/e2e/src/ from es6 to es5
 // then copies them to test/e2e/dist/
+// TODO: clear dist directory first
 gulp.task('build-e2e', function () {
   return gulp.src(paths.e2eSpecsSrc)
     //.pipe(plumber())
@@ -27,7 +28,7 @@ gulp.task('e2e', ['webdriver_update', 'build-e2e', 'serve-dist'], function(cb) {
   return gulp.src(paths.e2eSpecsDist + "/*.js")
     .pipe(protractor({
         configFile: "protractor.conf.js",
-        args: ['--baseUrl', 'http://127.0.0.1:9001']
+        args: ['--baseUrl', 'http://localhost:9001']
     }))
     .on('error', function(e) {
         gutil.beep();

@@ -38,6 +38,9 @@ module.exports = function(config) {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress'],
 
+    proxyValidateSSL: false,
+    // ['websocket', 'flashsocket', 'xhr-polling', 'jsonp-polling']
+    transports: ['xhr-polling'], 
 
     // web server port
     port: 9876,

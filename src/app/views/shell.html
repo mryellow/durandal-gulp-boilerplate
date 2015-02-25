@@ -11,6 +11,7 @@
                 <i class="fa fa-home"></i>
                 <span>Durandal</span>
             </a>
+            <span class="spinner" style="visibility: hidden;">Mock spinner</span>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -28,11 +29,12 @@
 
             <form class="navbar-form navbar-right" role="search" data-bind="submit:search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input id="search" name="search" type="text" class="form-control" placeholder="Search">
                 </div>
             </form>
         </div>
     </nav>
 
     <div class="page-host" data-bind="router: { transition:'entrance' }"></div>
+
 </div>

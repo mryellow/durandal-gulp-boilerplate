@@ -6,9 +6,10 @@ exports.config = {
   capabilities: {
     'browserName': 'chrome'
   },
+  
   onPrepare: function() {
     browser.ignoreSynchronization = true;
-
+/*
     by.addLocator('valueBind', function (bindingModel, opt_parentElement) {
       var using = opt_parentElement || document;
       var matches = using.querySelectorAll('*[value\\.bind="' + bindingModel +'"]');
@@ -24,7 +25,7 @@ exports.config = {
 
       return result;
     });
-
+*/
   },
 
   //seleniumAddress: 'http://0.0.0.0:4444',
