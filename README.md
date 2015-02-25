@@ -1,5 +1,16 @@
 # durandal-gulp-boilerplate
+
 Common Gulp tasks for Durandal development.
+
+Based on [Aurelia seed project](https://github.com/aurelia/skeleton-navigation).
+
+## Usage
+
+* `npm install`
+* `gulp build-deps`
+* `gulp watch`
+
+## Commands
 
 `gulp clean`
 Delete files from `dist`.
@@ -10,14 +21,20 @@ Delete bower dependencies, from `lib` and `dist/lib`.
 `gulp clean-sass`
 Delete processed CSS from `assets/style/dist`.
 
+`gulp clean-e2e`
+Delete processed tests from `test/e2e/dist`.
+
 `gulp build`
 Complete build including bower and Durandal.
 
-`gulp build-deps`
-Clean and reinstall bower dependencies. Room for other dependency managers.
+`gulp build-bower-install`
+Install bower dependencies.
 
 `gulp build-bower`
-Install bower dependencies and copy main files to `lib` and `dist/lib`.
+Copy main files to `lib` and `dist/lib`.
+
+`gulp build-deps`
+Clean and reinstall bower dependencies. Room for other dependency managers.
 
 `gulp build-system`
 RequireJS optimise Durandal build.
@@ -28,6 +45,9 @@ Copy html to `dist`.
 `gulp build-assets`
 Copy CSS, images and other assets.
 
+`gulp build-bootstrap-js`
+Concat bootstrap components and copy to `vendor/`.
+
 `gulp cs`
 JSCS code style.
 
@@ -35,6 +55,7 @@ JSCS code style.
 JSHint linting.
 
 `gulp test`
+`gulp tdd`
 Karma tests on `.` via PhantomJS.
 
 `gulp e2e`
@@ -44,6 +65,7 @@ Protractor tests on `dist/` port 9001.
 Preprocess `assets/style/main.scss` to css. Can process whole directory if needed.
 
 `gulp serve`
+`gulp serve-dist`
 `gulp watch`
 
 `gulp prepare-release`
