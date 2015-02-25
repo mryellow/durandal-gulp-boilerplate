@@ -43,7 +43,7 @@ RequireJS optimise Durandal build.
 Copy html to `dist`.
 
 `gulp build-assets`
-Copy CSS, images and other assets.
+Copy CSS, images and other assets, including vendor assets.
 
 `gulp build-bootstrap-js`
 Concat bootstrap components and copy to `vendor/`.
