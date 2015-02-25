@@ -75,8 +75,10 @@ Preprocess `assets/style/main.scss` to css. Can process whole directory if neede
 
 ## Configuration
 
-`allowed: '{jpg,png,gif,css}'`
+`allowed: '{jpg,png,gif,css}'`  
 Specify which asset types are copied.
 
-`bootstrapjs: '{alert,button,collapse,dropdown,modal}'`
+`bootstrapjs: '{alert,button,collapse,dropdown,modal}'`  
 Customise bootstrap javascript, leaving out unused components.
+
+Also be aware most of bootstrap is disabled in `src/assets/style/bootstrap.scss`
