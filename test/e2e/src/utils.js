@@ -43,7 +43,7 @@ var Utils = (function () {
     Utils.prototype.koSendKeys = function(locator) {
         var d = protractor.promise.defer();
         var _self = this;
-        if (!locator || !arguments || !(arguments.length > 1)) d.cancel();
+        if (!locator || !arguments || !(arguments.length > 1)) d.cancel(); // Warning on length condition, it is clearer this way.
 
         // Allow for unlimited arguments, to be passed to `sendKeys`.
         var args = [];

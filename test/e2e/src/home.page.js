@@ -14,7 +14,7 @@ var HomePage = (function () {
 
     HomePage.prototype.init = function(route, title) {
         var d = protractor.promise.defer();
-        // TODO: You may wish to ensure the client has passed a login screen etc.
+        // CUSTOM: You may wish to ensure the client has passed a login screen etc.
         common.goRoute(route, title).then(function () {
             d.fulfill();
         });
