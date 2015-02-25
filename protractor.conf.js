@@ -10,6 +10,8 @@ exports.config = {
   onPrepare: function() {
     browser.ignoreSynchronization = true;
 /*
+    // TODO: This is Aurelia `value.bind` handler. Implement similar for KnockoutJS.
+    
     by.addLocator('valueBind', function (bindingModel, opt_parentElement) {
       var using = opt_parentElement || document;
       var matches = using.querySelectorAll('*[value\\.bind="' + bindingModel +'"]');
