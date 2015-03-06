@@ -15,11 +15,13 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     // TODO: Use requirejs.config
     files: [
-      'test/unit/test-main.js',
-      {pattern: paths.input + paths.root + '**/*.js', included: false},
-      {pattern: paths.input + paths.vendor + '**/*.js', included: false},
-      {pattern: 'test/unit/dev/**/*.spec.js', included: false}
+        'test/unit/test-main.js',
+        {pattern: paths.input + paths.root + '**/*.js', included: false},
+        {pattern: paths.input + paths.vendor + '**/*.js', included: false},
+        {pattern: 'test/unit/dev/**/*.spec.js', included: false}
     ],
+    //,
+    
 
     // list of files to exclude
     exclude: [
