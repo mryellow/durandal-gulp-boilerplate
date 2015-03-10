@@ -1,12 +1,13 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var beep = require('beepbeep');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var paths = require('../paths');
 
 var onError = function (err) {  
-	gutil.beep();
+	beep();
 	this.emit('end');
 };
 

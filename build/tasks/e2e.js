@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var beep = require('beepbeep');
 //var to5 = require('gulp-6to5');
 //var plumber = require('gulp-plumber');
 var webdriver_update = require('gulp-protractor').webdriver_update;
@@ -31,7 +32,7 @@ gulp.task('e2e', ['webdriver_update', 'build-e2e', 'serve-dist'], function(cb) {
         args: ['--baseUrl', 'http://localhost:9001']
     }))
     .on('error', function(e) {
-        gutil.beep();
+        beep();
         throw e;
     });
 });

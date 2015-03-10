@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var beep = require('beepbeep');
 var karma = require('karma').server;
 
 /**
@@ -10,7 +11,7 @@ gulp.task('test', function (done) {
 		configFile: __dirname + '/../../karma.conf.js',
 		singleRun: true
 	}, function(e) {
-		if (e !== 0) gutil.beep();
+		if (e !== 0) beep();
 		done();
 	});
 });
@@ -22,7 +23,7 @@ gulp.task('tdd', function (done) {
 	karma.start({
 		configFile: __dirname + '/../../karma.conf.js'
 	}, function(e) {
-		if (e !== 0) gutil.beep();
+		if (e !== 0) beep();
 		done();
 	});
 });
