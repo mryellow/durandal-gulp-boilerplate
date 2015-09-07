@@ -22,5 +22,8 @@ requirejs.config({
         //'bootstrap':                '../vendor/bootstrap-sass/assets/javascripts/bootstrap'
     },
     shim: {
+        'jquery': {
+            exports: ['$','jQuery']
+        }
     }
 });
