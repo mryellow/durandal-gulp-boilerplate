@@ -4,11 +4,9 @@ Common Gulp tasks for Durandal development.
 
 Based on [Aurelia seed project](https://github.com/aurelia/skeleton-navigation).
 
-Staging:
-![CircleCI staging status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/staging.svg?style=shield&circle-token=:circle-token)
-
-Production:
-![CircleCI production status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/production.svg?style=shield&circle-token=:circle-token)
+| Staging       | Production    |
+| ------------- | ------------- |
+| ![CircleCI staging status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/staging.svg?style=shield&circle-token=:circle-token)  | ![CircleCI production status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/production.svg?style=shield&circle-token=:circle-token)  |
 
 ## Usage
 
