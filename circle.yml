@@ -49,3 +49,7 @@ deployment:
       - heroku restart --app $HEROKU_PROD_NAME
       #- heroku scale worker=$HEROKU_PROD_DYNO --app $HEROKU_PROD_NAME
       - heroku maintenance:off --app $HEROKU_PROD_NAME
+
+notify:
+  webhooks:
+    - url: https://webhooks.gitter.im/e/c618b406fe79beec062d
