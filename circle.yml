@@ -1,11 +1,15 @@
 machine:
   environment:
-    HEROKU_APP_PROD: durandal-gulp-boilerplate
+    HEROKU_PROD_NAME: durandal-gulp-boilerplate
+    HEROKU_STGE_NAME: durandal-gulp-boilerplate1
+    #HEROKU_PROD_DYNO: 1
+    #HEROKU_STGE_DYNO: 1
 
 general:
   branches:
     only:
-      - master
+      - staging
+      - production
 
 dependencies:
   post:
@@ -13,22 +17,35 @@ dependencies:
     - gulp build
 
 deployment:
-  production:
-    branch: master
-    #heroku:
-    #  appname: durandal-gulp-boilerplate
+  deploy_staging:
+    branch: staging
     commands:
-      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_APP_PROD || true
-      #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_APP_PROD
-      #- git branch -D deploy
+      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_STGE_NAME || true # Ignore if already set.
+      #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_STGE_NAME
       - git config --global user.name "${CIRCLE_USERNAME}"
-      - git config --global user.email "${CIRCLE_USERNAME}"
+      - git config --global user.email "${CIRCLE_USERNAME}@${HEROKU_STGE_NAME}"
       - git checkout -b deploy
       - git add -f dist/
       - git commit -m "Deploying to Heroku"
-      - heroku maintenance:on --app $HEROKU_APP_PROD
-      #- heroku scale worker=0 --app $HEROKU_APP_PROD
-      - git push git@heroku.com:$HEROKU_APP_PROD.git -f deploy:master
-      - heroku restart --app $HEROKU_APP_PROD
-      #- heroku scale worker=1 --app $HEROKU_APP_PROD
-      - heroku maintenance:off --app $HEROKU_APP_PROD
+      - heroku maintenance:on --app $HEROKU_STGE_NAME
+      #- heroku scale worker=0 --app $HEROKU_STGE_NAME
+      - git push git@heroku.com:$HEROKU_STGE_NAME.git -f deploy:master
+      - heroku restart --app $HEROKU_STGE_NAME
+      #- heroku scale worker=$HEROKU_STGE_DYNO --app $HEROKU_STGE_NAME
+      - heroku maintenance:off --app $HEROKU_STGE_NAME
+  deploy_production:
+    branch: production
+    commands:
+      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_PROD_NAME || true # Ignore if already set.
+      #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_PROD_NAME
+      - git config --global user.name "${CIRCLE_USERNAME}"
+      - git config --global user.email "${CIRCLE_USERNAME}@${HEROKU_PROD_NAME}"
+      - git checkout -b deploy
+      - git add -f dist/
+      - git commit -m "Deploying to Heroku"
+      - heroku maintenance:on --app $HEROKU_PROD_NAME
+      #- heroku scale worker=0 --app $HEROKU_PROD_NAME
+      - git push git@heroku.com:$HEROKU_PROD_NAME.git -f deploy:master
+      - heroku restart --app $HEROKU_PROD_NAME
+      #- heroku scale worker=$HEROKU_PROD_DYNO --app $HEROKU_PROD_NAME
+      - heroku maintenance:off --app $HEROKU_PROD_NAME
