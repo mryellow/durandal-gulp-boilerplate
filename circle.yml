@@ -1,5 +1,6 @@
 machine:
   environment:
+    CIRCLE_TEST_REPORTS: test/unit/output
     HEROKU_PROD_NAME: durandal-gulp-boilerplate
     HEROKU_STGE_NAME: durandal-gulp-boilerplate1
     #HEROKU_PROD_DYNO: 1
