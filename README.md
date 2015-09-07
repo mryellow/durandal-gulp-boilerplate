@@ -8,6 +8,8 @@ Based on [Aurelia seed project](https://github.com/aurelia/skeleton-navigation).
 | ------------- | ------------- |
 | ![CircleCI staging status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/staging.svg?style=shield&circle-token=:circle-token)  | ![CircleCI production status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate/tree/production.svg?style=shield&circle-token=:circle-token)  |
 
+[![Join the chat at https://gitter.im/mryellow/durandal-gulp-boilerplate](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mryellow/durandal-gulp-boilerplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Usage
 
 * `npm install`
