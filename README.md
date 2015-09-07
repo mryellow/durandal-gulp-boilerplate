@@ -4,6 +4,8 @@ Common Gulp tasks for Durandal development.
 
 Based on [Aurelia seed project](https://github.com/aurelia/skeleton-navigation).
 
+![CircleCI Status](https://circleci.com/gh/mryellow/durandal-gulp-boilerplate.svg?style=shield&circle-token=:circle-token)
+
 ## Usage
 
 * `npm install`
