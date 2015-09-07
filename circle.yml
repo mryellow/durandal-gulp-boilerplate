@@ -17,8 +17,8 @@ deployment:
       - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app durandal-gulp-boilerplate || true
       #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app durandal-gulp-boilerplate
       #- git branch -D deploy
-      - git config --global user.name "$CIRCLE_USERNAME"
-      - git config --global user.email "$CIRCLE_USERNAME"
+      - git config --global user.name "${CIRCLE_USERNAME}"
+      - git config --global user.email "${CIRCLE_USERNAME}"
       - git checkout -b deploy
       - git add -f dist/
       - git commit -m "Deploying to Heroku"
