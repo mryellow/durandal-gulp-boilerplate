@@ -9,6 +9,9 @@ requirejs.config({
         //'bootstrap':                '../vendor/bootstrap-sass/assets/javascripts/bootstrap'
     },
     shim: {
+        'jquery': {
+            exports: ['$','jQuery']
+        }
     }
 });
 
@@ -32,6 +35,6 @@ define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'plugins/rout
 
         // Show the app by setting the root view model for our application with a transition.
         app.setRoot('viewmodels/shell', 'entrance');
-        
+
     });
 });

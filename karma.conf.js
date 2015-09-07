@@ -20,8 +20,7 @@ module.exports = function(config) {
         {pattern: paths.input + paths.vendor + '**/*.js', included: false},
         {pattern: 'test/unit/dev/**/*.spec.js', included: false}
     ],
-    //,
-    
+
 
     // list of files to exclude
     exclude: [
@@ -38,11 +37,19 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    //reporters: ['progress', 'junit'],
     reporters: ['progress'],
+    /*
+    junitReporter: {
+        outputDir: 'test/unit/output', // results will be saved as $outputDir/$browserName.xml
+        outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
+        suite: '' // suite will become the package name attribute in xml testsuite element
+    },
+    */
 
     proxyValidateSSL: false,
     // ['websocket', 'flashsocket', 'xhr-polling', 'jsonp-polling']
-    transports: ['xhr-polling'], 
+    transports: ['xhr-polling'],
 
     // web server port
     port: 9876,
