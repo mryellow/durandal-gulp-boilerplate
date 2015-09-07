@@ -1,3 +1,6 @@
+environment:
+  HEROKU_APP_PROD: durandal-gulp-boilerplate
+
 general:
   branches:
     only:
@@ -14,17 +17,17 @@ deployment:
     #heroku:
     #  appname: durandal-gulp-boilerplate
     commands:
-      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app durandal-gulp-boilerplate || true
-      #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app durandal-gulp-boilerplate
+      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_APP_PROD || true
+      #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_APP_PROD
       #- git branch -D deploy
-      - git config --global user.name "${CIRCLE_USERNAME}"
-      - git config --global user.email "${CIRCLE_USERNAME}"
+      - git config --global user.name "${CIRCLE_USERNAME} $(CIRCLE_USERNAME)"
+      - git config --global user.email "${CIRCLE_USERNAME} $(CIRCLE_USERNAME)"
       - git checkout -b deploy
       - git add -f dist/
       - git commit -m "Deploying to Heroku"
-      - heroku maintenance:on --app durandal-gulp-boilerplate
-      #- heroku scale worker=0 --app durandal-gulp-boilerplate
-      - git push git@heroku.com:durandal-gulp-boilerplate.git -f deploy:master
-      - heroku restart --app durandal-gulp-boilerplate
-      #- heroku scale worker=1 --app durandal-gulp-boilerplate
-      - heroku maintenance:off --app durandal-gulp-boilerplate
+      - heroku maintenance:on --app $HEROKU_APP_PROD
+      #- heroku scale worker=0 --app $HEROKU_APP_PROD
+      - git push git@heroku.com:$HEROKU_APP_PROD.git -f deploy:master
+      - heroku restart --app $HEROKU_APP_PROD
+      #- heroku scale worker=1 --app $HEROKU_APP_PROD
+      - heroku maintenance:off --app $HEROKU_APP_PROD
