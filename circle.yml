@@ -1,3 +1,28 @@
+general:
+  branches:
+    only:
+      - master
+
 dependencies:
   post:
     - bower install
+    - gulp build
+
+deployment:
+  production:
+    branch: master
+    #heroku:
+    #  appname: durandal-gulp-boilerplate
+    commands:
+      - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app durandal-gulp-boilerplate || true
+      - heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app durandal-gulp-boilerplate
+      #- git branch -D deploy
+      - git config --global user.name "$CIRCLE_USERNAME"
+      - git config --global user.email "$CIRCLE_USERNAME"
+      - git checkout -b deploy
+      - git add -f dist/
+      - git commit -m "Deploying to Heroku"
+      - heroku maintenance:on --app durandal-gulp-boilerplate
+      - git push git@heroku.com:durandal-gulp-boilerplate.git -f deploy:master
+      - heroku restart --app durandal-gulp-boilerplate
+      - heroku maintenance:off --app durandal-gulp-boilerplate

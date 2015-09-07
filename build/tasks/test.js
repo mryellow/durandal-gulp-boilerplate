@@ -13,6 +13,7 @@ gulp.task('test', function (done) {
 	}, function(e) {
 		if (e !== 0) beep();
 		done();
+		process.exit(e);
 	});
 });
 

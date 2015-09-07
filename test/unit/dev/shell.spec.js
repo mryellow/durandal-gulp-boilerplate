@@ -18,6 +18,10 @@ define(['viewmodels/shell'], function(model) {
                 expect(model.activate().then).toBeDefined();
             });
 
+            xit('should fail', function() {
+                expect(model.foo).toBeDefined();
+            });
+
         });
 
     });

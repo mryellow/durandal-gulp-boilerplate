@@ -8,7 +8,7 @@ describe('homepage', function() {
     var u = new Utils();
     var Page = require('./' + route + '.page');
     var page = new Page();
-    
+
     beforeEach(function (done) {
         page.init(route, title).then(function () {
             done();
@@ -38,7 +38,7 @@ describe('homepage', function() {
                 });
             });
             expect(browser.driver.isElementPresent(locator)).toBeTruthy();
-            
+
         });
 
     });
