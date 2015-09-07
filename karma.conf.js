@@ -37,15 +37,15 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    //reporters: ['progress', 'junit'],
-    reporters: ['progress'],
-    /*
+    reporters: ['progress', 'junit'],
+    //reporters: ['progress'],
+
     junitReporter: {
         outputDir: 'test/unit/output', // results will be saved as $outputDir/$browserName.xml
         outputFile: undefined, // if included, results will be saved as $outputDir/$browserName/$outputFile
         suite: '' // suite will become the package name attribute in xml testsuite element
     },
-    */
+    
 
     proxyValidateSSL: false,
     // ['websocket', 'flashsocket', 'xhr-polling', 'jsonp-polling']
