@@ -1,5 +1,7 @@
 # durandal-gulp-boilerplate
 
+[![Join the chat at https://gitter.im/mryellow/durandal-gulp-boilerplate](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mryellow/durandal-gulp-boilerplate?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Common Gulp tasks for Durandal development.
 
 Based on [Aurelia seed project](https://github.com/aurelia/skeleton-navigation).
