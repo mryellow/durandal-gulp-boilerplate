@@ -1,4 +1,5 @@
 dist/
+vendor/
 test/e2e/dist/
 test/unit/output/
 src/assets/style/dist/
