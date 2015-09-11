@@ -24,7 +24,7 @@ test:
 deployment:
   deploy_staging:
     branch: staging
-    owner: mryellow
+    owner: $CIRCLE_PROJECT_USERNAME
     commands:
       - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_STGE_NAME || true # Ignore if already set.
       #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_STGE_NAME
@@ -41,7 +41,7 @@ deployment:
       - heroku maintenance:off --app $HEROKU_STGE_NAME
   deploy_production:
     branch: production
-    owner: mryellow
+    owner: $CIRCLE_PROJECT_USERNAME
     commands:
       - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_PROD_NAME || true # Ignore if already set.
       #- heroku config:set BUILDPACK_URL=https://github.com/heroku/heroku-buildpack-php.git --app $HEROKU_PROD_NAME
