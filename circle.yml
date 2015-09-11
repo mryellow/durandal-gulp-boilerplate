@@ -5,11 +5,11 @@ machine:
     #HEROKU_PROD_DYNO: 1
     #HEROKU_STGE_DYNO: 1
 
-general:
-  branches:
-    only:
-      - staging
-      - production
+#general:
+#  branches:
+#    only:
+#      - staging
+#      - production
 
 dependencies:
   post:
