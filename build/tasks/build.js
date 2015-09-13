@@ -8,6 +8,7 @@ var changed = require('gulp-changed');
 var del = require('del');
 var vinylPaths = require('vinyl-paths');
 var replace = require('gulp-replace');
+var preprocess = require('gulp-preprocess');
 //var plumber = require('gulp-plumber');
 //var to5 = require('gulp-6to5');
 //var sourcemaps = require('gulp-sourcemaps');
@@ -22,6 +23,7 @@ var paths = require('../paths');
 gulp.task('build-system', function (callback) {
   return runSequence(
     'durandal',
+    'build-config',
     callback
   );
 });
@@ -37,6 +39,14 @@ gulp.task('build-system', function () {
     .pipe(gulp.dest(paths.output));
 });
 */
+
+// Insert env vars into javascript.
+gulp.task('build-config', function () {
+  return gulp.src(paths.output + '**/*.js')
+  //.pipe(replace(/\%{3}(.+)\%{3}/g, '$1')) // Placeholder replace.
+    .pipe(preprocess())
+    .pipe(gulp.dest(paths.output));
+});
 
 // copies changed html files to the output directory
 gulp.task('build-html', function () {
@@ -82,8 +92,8 @@ gulp.task('build-bootstrap-fonts', function() {
 */
 gulp.task('build-deps', function(callback) {
   return runSequence(
-    'clean-deps', 
-    ['build-bower'], 
+    'clean-deps',
+    ['build-bower'],
     ['build-bootstrap-js', 'sass'],
     callback
   );

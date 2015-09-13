@@ -1,4 +1,6 @@
 machine:
+  php:
+    version: 5.6.5
   environment:
     HEROKU_PROD_NAME: durandal-gulp-boilerplate
     HEROKU_STGE_NAME: durandal-gulp-boilerplate1
