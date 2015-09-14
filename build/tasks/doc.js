@@ -8,5 +8,5 @@ gulp.task('doc', function(){
     .pipe(yuidoc.parser())
     .pipe(yuidoc.reporter())
     .pipe(yuidoc.generator())
-    .pipe(gulp.dest(paths.doc));
+    .pipe(gulp.dest(paths.doc+'/api'));
 });
