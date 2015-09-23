@@ -69,7 +69,7 @@ var waitForCurrentUrl = function(timeout) {
         });
     };
 
-    CommonPage.prototype.waitReady = function () {
+    CommonPage.prototype.waitReady = function (started) {
         var _self = this;
 
         // TODO: Could look for Durandal `page-host` to ensure it's there first.
@@ -84,7 +84,8 @@ var waitForCurrentUrl = function(timeout) {
             return browser.driver.wait(function () {
                 // FIXME: Use `u.isVisible` instead?
                 return element(config.spinner).getAttribute('style').then(function (value) {
-                    return ((value === 'display: none;') || (value === 'visibility: hidden;'));
+                    // Wait for started or finished.
+                    return (((value === 'display: none;') || (value === 'visibility: hidden;')) ^ started);
                 });
             }, 10000);
         });
