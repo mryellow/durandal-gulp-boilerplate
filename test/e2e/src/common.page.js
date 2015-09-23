@@ -9,9 +9,8 @@ var CommonPage = (function () {
     function CommonPage() {
 
     }
-    
+
     CommonPage.prototype.goRoute = function (route, title) {
-        var d = protractor.promise.defer();
         var _self = this;
 
 /*
@@ -23,7 +22,7 @@ var waitForCurrentUrl = function(timeout) {
     };
 
     return browser.driver.wait(function() {
-        // Return a condition. Code will continue to run until is true 
+        // Return a condition. Code will continue to run until is true
         return browser.driver.getCurrentUrl().then(function(url) {
             return url;
         }, function(err) {
@@ -34,14 +33,14 @@ var waitForCurrentUrl = function(timeout) {
 };
 */
 
-        
+
         // CUSTOM: Optional, click navigation rather than using a `get`.
         //koSendClick(by.xpath("//*[@id='navbar_main']//a[@role='menuitem' and text()='" + title + "']"));
-        browser.driver.get(browser.baseUrl + '#' + route).then(function () {
-            browser.driver.wait(function () {
+        return browser.driver.get(browser.baseUrl + '#' + route).then(function () {
+            return browser.driver.wait(function () {
                 // TODO: `getCurrentUrl`
                 return browser.driver.getTitle().then(function(route_title) {
-                    //console.log('Title: ', route_title);
+                    //console.log('Title: ', route_title, (route_title.indexOf(title) >= 0));
                     // CUSTOM: Check for logout alert
                     /*
                     browser.driver.isElementPresent(by.xpath("//*[@class='alert-float']//*[@role='alert']//span[text()='Successfully logged out']")).then(function (el) {
@@ -53,7 +52,7 @@ var waitForCurrentUrl = function(timeout) {
                     return (route_title && route_title.indexOf(title) >= 0); // FIXME: test `=== 0` instead? Only if title is at the start, no partial matches.
                 });
             }, 30000).then(function () {
-                _self.waitReady();
+                return _self.waitReady();
                 // CUSTOM: Clear alerts
                 /*
                 browser.driver.findElements(by.xpath("//*[@class='alert-float']//*[@role='alert']//button[@class='close']")).then(function (alerts) {
@@ -66,34 +65,29 @@ var waitForCurrentUrl = function(timeout) {
                     }
                 });
                 */
-                d.fulfill();
             });
         });
-        return d.promise;
     };
 
     CommonPage.prototype.waitReady = function () {
-        var d = protractor.promise.defer();
         var _self = this;
 
         // TODO: Could look for Durandal `page-host` to ensure it's there first.
         //var locator = by.css('.page-host');
         //browser.driver.isElementPresent(locator).then(function(isPresent) {
 
-        browser.driver.wait(function () {
+        return browser.driver.wait(function () {
             return browser.driver.isElementPresent(config.spinner).then(function (el) {
                 return el === true;
             });
-        }, 30000).then(function () {
-            browser.driver.wait(function () {
-                return element(config.spinner).getAttribute('style'), function (value) {
+        }, 10000).then(function () {
+            return browser.driver.wait(function () {
+                // FIXME: Use `u.isVisible` instead?
+                return element(config.spinner).getAttribute('style').then(function (value) {
                     return ((value === 'display: none;') || (value === 'visibility: hidden;'));
-                };
-            }).then(function () {
-                d.fulfill(true);
-            });
+                });
+            }, 10000);
         });
-        return d.promise;
     };
 
     return CommonPage;
