@@ -29,7 +29,7 @@ gulp.task('e2e', ['webdriver_update', 'build-e2e', 'serve-dist'], function(cb) {
   return gulp.src(paths.e2eSpecsDist + "/*.js")
     .pipe(protractor({
         configFile: "protractor.conf.js",
-        args: ['--baseUrl', 'http://localhost:9001']
+        args: ['--baseUrl', 'http://localhost:9000']
     }))
     .on('error', function(e) {
         beep();
