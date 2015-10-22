@@ -13,7 +13,7 @@ describe('homepage', function() {
         page.init(route, title).then(function () {
             done();
         });
-    }, 30000);
+    }, config.timeout);
 
     describe('title', function() {
 

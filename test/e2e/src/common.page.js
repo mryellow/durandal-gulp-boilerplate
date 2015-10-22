@@ -13,60 +13,30 @@ var CommonPage = (function () {
     CommonPage.prototype.goRoute = function (route, title) {
         var _self = this;
 
-/*
-// TODO: Implement better navigation status tracker.
-https://github.com/angular/protractor/issues/610
-var waitForCurrentUrl = function(timeout) {
-    if (timeout == null) {
-        timeout = browser.manage().timeouts().pageLoadTimeout;
-    };
+        var currentUrl;
+        var escaped = route.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        var reg = new RegExp('('+escaped+')+');
 
-    return browser.driver.wait(function() {
-        // Return a condition. Code will continue to run until is true
-        return browser.driver.getCurrentUrl().then(function(url) {
-            return url;
-        }, function(err) {
-            // errored  .. TODO: retry
-            throw err;
-        });
-    }, timeout, 'Expectation error: Timed out waiting for current url');
-};
-*/
-
-
-        // CUSTOM: Optional, click navigation rather than using a `get`.
-        //koSendClick(by.xpath("//*[@id='navbar_main']//a[@role='menuitem' and text()='" + title + "']"));
-        return browser.driver.get(browser.baseUrl + '#' + route).then(function () {
-            return browser.driver.wait(function () {
-                // TODO: `getCurrentUrl`
-                return browser.driver.getTitle().then(function(route_title) {
-                    //console.log('Title: ', route_title, (route_title.indexOf(title) >= 0));
-                    // CUSTOM: Check for logout alert
-                    /*
-                    browser.driver.isElementPresent(by.xpath("//*[@class='alert-float']//*[@role='alert']//span[text()='Successfully logged out']")).then(function (el) {
-                        if (el) {
-                            console.log('Logout');
-                        }
-                    });
-                    */
-                    return (route_title && route_title.indexOf(title) >= 0); // FIXME: test `=== 0` instead? Only if title is at the start, no partial matches.
-                });
-            }, 30000).then(function () {
+        return browser.getCurrentUrl().then(function (url) {
+            currentUrl = url;
+        }).then(function () {
+            //console.log('url', currentUrl, (currentUrl && reg.test(currentUrl)));
+            if (currentUrl && reg.test(currentUrl)) {
+                //console.log('already', currentUrl, route, reg);
                 return _self.waitReady();
-                // CUSTOM: Clear alerts
-                /*
-                browser.driver.findElements(by.xpath("//*[@class='alert-float']//*[@role='alert']//button[@class='close']")).then(function (alerts) {
-                    for (var x = 0; x < alerts.length; x++) {
-                        try {
-                            alerts[x].click();
-                        } catch (e) {
-                            console.log('alert', e);
-                        }
-                    }
+            } else {
+                //console.log('goto', route);
+                return browser.driver.get(browser.baseUrl + '#' + route).then(function () {
+                    //console.log('wait', route);
+                    return u.waitForUrlToChangeTo(reg).then(function () {
+                        //console.log('loading', route);
+                        return _self.waitReady();
+                    });
                 });
-                */
-            });
+            }
         });
+
+
     };
 
     CommonPage.prototype.waitReady = function (started) {
@@ -75,20 +45,112 @@ var waitForCurrentUrl = function(timeout) {
         // TODO: Could look for Durandal `page-host` to ensure it's there first.
         //var locator = by.css('.page-host');
         //browser.driver.isElementPresent(locator).then(function(isPresent) {
-
+        var path = config.spinner;
         return browser.driver.wait(function () {
-            return browser.driver.isElementPresent(config.spinner).then(function (el) {
+            return browser.driver.isElementPresent(path).then(function (el) {
                 return el === true;
             });
-        }, 10000).then(function () {
+        }, config.timeout).then(function () {
             return browser.driver.wait(function () {
                 // FIXME: Use `u.isVisible` instead?
-                return element(config.spinner).getAttribute('style').then(function (value) {
+                return element(path).getAttribute('style').then(function (value) {
                     // Wait for started or finished.
                     return (((value === 'display: none;') || (value === 'visibility: hidden;')) ^ started);
                 });
-            }, 10000);
+            }, config.timeout);
         });
+    };
+
+    CommonPage.prototype.waitCloud = function (started) {
+        var _self = this;
+
+        // TODO: App specific implementation, left as a hook.
+        return true;
+
+        /*
+        var path = by.xpath('//div[@data-bind="visible: $root.status.syncing"]');
+        return browser.driver.wait(function () {
+            return browser.driver.isElementPresent(path).then(function (el) {
+                return el === true;
+            });
+        }, config.timeout).then(function () {
+            return browser.driver.wait(function () {
+                // FIXME: Use `u.isVisible` instead?
+                return element(path).getAttribute('style').then(function (value) {
+                    // Wait for started or finished.
+                    return (((value === 'display: none;') || (value === 'visibility: hidden;')) ^ started);
+                });
+            }, config.timeout);
+        });
+        */
+    };
+
+    // FIXME: Save `route` and `title` as properties of page?
+    CommonPage.prototype.login = function(user, pass, skipcloud, route, title) {
+        //if (!user || !pass) throw new Error('Username and password must be configured in ENV.');
+        var _self = this;
+
+        // TODO: App specific implementation, left as a hook.
+        return true;
+
+        /*
+        return _self.goRoute('settings', 'Settings | DI').then(function () {
+            // Wait for login button
+            return browser.driver.isElementPresent(by.xpath('//button[text()="Login"]')).then(function (el) {
+                // Detect current login state.
+                // Bailout if already logged in (no login button found).
+                if (!el) return _self.waitReady();
+
+                // Continue with login.
+                return u.koSendKeys(by.id('user_settings_user'), user).then(function () {
+                    return u.koSendKeys(by.id('user_settings_pass'), pass, protractor.Key.ENTER);
+                // FIXME: Check for validation errors.
+                }).then(function () {
+                    //console.log('wait doing');
+                    return _self.waitReady(true);
+                });
+
+            }).then(function () {
+                //console.log('wait loading');
+                //by.linkText('Login')
+                return _self.waitReady();
+            }).then(function () {
+                //console.log('wait syncing');
+                if (skipcloud) {
+                    if (!route || !title) return true;
+                    return _self.goRoute(route, title);
+                }
+                return _self.waitCloud();
+            });
+
+        }).then(function () {
+            //console.log('do stuff');
+            if (!route || !title) return true;
+            return _self.goRoute(route, title);
+        });
+        */
+    };
+
+    CommonPage.prototype.logout = function() {
+        var _self = this;
+
+        // Detect current login state.
+        // FIXME: Better indicator than searching for login/logout button?
+        return browser.driver.isElementPresent(by.xpath('//button[text()="Logout"]')).then(function (el) {
+            // Bailout if already logged out (no logout button found).
+            if (!el) return _self.waitReady();
+
+            // Note: Use 2nd button as 1st is under BrowserSync notice.
+            return element(by.xpath('//button[text()="Logout"]')).click().then(function () {
+                // FIXME: Check for validation errors.
+                // Waiting for spinner, didn't happen.
+                // FIXME: logout has no spinner?
+                //return _self.waitReady(true);
+                //}).then(function () {
+                return _self.waitReady();
+            });
+        });
+        // FIXME: Wait for login button?
     };
 
     return CommonPage;

@@ -66,7 +66,7 @@ var Utils = (function () {
                 throw new Error('An ID attribute must be specified for knockout change event.');
             } else {
                 id = val;
-                return element(locator).clear()
+                return element(locator).clear();
             }
         }).then(function () {
             return element(locator).sendKeys.apply(this, args);
@@ -97,6 +97,27 @@ var Utils = (function () {
             });
         }).then(function () {
             element(locator).click();
+        });
+    };
+
+
+    /**
+     * @method waitForUrlToChangeTo
+     * https://github.com/angular/protractor/issues/610#issuecomment-37917269
+     * @param {RegExp} urlRegex wait until the URL changes to match this regex
+     * @returns {!webdriver.promise.Promise} Promise
+     */
+    Utils.prototype.waitForUrlToChangeTo = function(urlRegex) {
+        var currentUrl;
+
+        return browser.getCurrentUrl().then(function storeCurrentUrl(url) {
+            currentUrl = url;
+        }).then(function waitForUrlToChangeTo() {
+            return browser.wait(function waitForUrlToChangeTo() {
+                return browser.getCurrentUrl().then(function compareCurrentUrl(url) {
+                    return urlRegex.test(url);
+                });
+            });
         });
     };
 
