@@ -14,15 +14,36 @@ machine:
 #      - production
 
 dependencies:
+  cache_directories:
+    - "bower_components"
   post:
     - bower install
     - gulp build
+    #- wget https://saucelabs.com/downloads/sc-latest-linux.tar.gz
+    #- tar -xzf sc-latest-linux.tar.gz
 
 test:
+  #pre:
+  #  - gulp build-e2e
+  #  - gulp serve-dist:
+  #      background: true
+  #override:
+  #  - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready:
+  #      background: true
+  #  # Wait for tunnel to be ready
+  #  - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
+  #  # Wait for app to be ready
+  #  - curl --retry 10 --retry-delay 2 -v http://localhost:9001
+  #  # Run unit and e2e tests
+  #  - npm test && node node_modules/protractor/bin/protractor protractor.conf.js
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
     - find . -type f -regex ".*/test/unit/output/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+  #  - killall --wait sc
 
+# This could be on a PHP backend project.
+# Triggered using:
+# - "curl -v -H \"Accept: application/json\" -X POST https://circleci.com/api/v1/project/$CIRCLE_PROJECT_USERNAME/$BACKEND_PROJECT_REPONAME/tree/staging?circle-token=$BACKEND_TOKEN"
 deployment:
   deploy_staging:
     branch: staging
@@ -42,7 +63,8 @@ deployment:
       #- heroku scale worker=$HEROKU_STGE_DYNO --app $HEROKU_STGE_NAME
       - heroku maintenance:off --app $HEROKU_STGE_NAME
   deploy_production:
-    branch: production
+    #branch: production
+    tag: /v[0-9]+(\.[0-9]+)*/ # /release-.*/
     #owner: $CIRCLE_PROJECT_USERNAME
     commands:
       - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-php --app $HEROKU_PROD_NAME || true # Ignore if already set.
