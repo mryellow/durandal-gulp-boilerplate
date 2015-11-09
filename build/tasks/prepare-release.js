@@ -20,7 +20,7 @@ gulp.task('changelog', function(callback) {
   return changelog({
     preset: 'angular'
   })
-  .pipe(fs.createWriteStream('./doc/CHANGELOG.md'));
+  .pipe(fs.createWriteStream('./CHANGELOG.md'));
 });
 
 // calls the listed sequence of tasks in order
