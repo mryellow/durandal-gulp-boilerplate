@@ -4,12 +4,15 @@
   "description": "Common Gulp tasks for Durandal development",
   "main": "dist/index.html",
   "dependencies": {
-    "gulp": "^3.8.11"
+    "bower": "^1.4.1",
+    "gulp": "^3.8.11",
+    "protractor": "^2.3.0",
+    "webdriver-manager": "^7.0.1"
   },
   "devDependencies": {
     "beepbeep": "^1.2.0",
     "browser-sync": "^2.1.1",
-    "conventional-changelog": "0.0.11",
+    "conventional-changelog": "^0.5.1",
     "del": "^1.1.1",
     "gulp-autoprefixer": "^2.1.0",
     "gulp-bower": "0.0.10",
@@ -34,7 +37,7 @@
     "karma-chrome-launcher": "^0.2.0",
     "karma-firefox-launcher": "^0.1.6",
     "karma-jasmine": "^0.3.6",
-    "karma-junit-reporter": "^0.3.4",
+    "karma-junit-reporter": "^0.3.8",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-requirejs": "^0.2.2",
     "main-bower-files": "^2.5.0",
